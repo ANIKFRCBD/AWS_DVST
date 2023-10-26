@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-l5*1r9e@i9#(0fptnb#n(bg)6119uj^s=+dddd_w$cp_)gu80r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".onrender.com",'127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = [".onrender.com",'127.0.0.1','0.0.0.0','frcdvst.eu-north-1.console.aws.amazon.com']
 PORT = 10000
 
 
