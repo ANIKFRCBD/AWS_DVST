@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FRC:DVST</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+        /* Your custom CSS styles here */
+        body {
+            background-image: url("{% static 'images/DVST.gif' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow: scroll;
+            background-color: rgba(0, 0, 0, 0.5);
+			image-resolution: from-image | from-image snap | snap;
+
+        }
+	</style>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static//fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+
+		<div" class="container" style="margin-top: 10px;">
+			<img  src="{% static 'images/logodvstracker.png' %}" alt="DVST" style="height: 100px; width: 100px; float: left;">
+			<h1 style="text-align: center; margin-top: 10px; color: #ffffff;">Data Varification System Tracker (DVST)</h1>
+			
+		</div>
+
+		
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w" method="post" action="">
+					{% csrf_token %}
+					<a href="{% url 'admin:index' %}" class="container-login100-form-btn btn-google m-b-20">
+						Admin Login
+					</a>
+                    <a href="{% url 'signin' %}" class="container-login100-form-btn btn-google m-b-20">
+						User Login
+					</a>
+                    <a href="{% url 'signup' %}" class="container-login100-form-btn btn-google m-b-20">
+						User signup
+					</a>
+
+				</form>
+			</div>
+
+			</div>
+			
+		</div>
+		<div style="margin-left: 10px; margin-right: 10px;">
+			<div>
+				<img src="{% static 'images/frclogo.png' %}" alt="frclogo" style="height: auto; width: auto; float: right;"> 
+				<h6 style="text-align: left; color: white;">All Rights Reserved by FRC Bangladesh</h6>
+												
+			</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
+
+</body>
+</html>

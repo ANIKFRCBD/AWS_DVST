@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Plotly.js library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Include Plotly CSS for chart styling -->
+    <link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css">
+    <!-- Add your custom styles here -->
+    <style>
+        /* Your custom CSS styles here */
+        body {
+            background-image: url("{% static 'images/DATA.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow: scroll;
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            width: 100wh;       
+            }
+
+        .container {
+            padding: 20px;
+        }
+
+        .custom-sidebar {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .custom-button {
+            background-color: #091420;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #0b2541;
+        }
+
+        .table-container {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #ffffff;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+            color:rgb(8, 8, 8); /* Change font color for header */
+        }
+
+        .table-container table td {
+            color: rgb(1, 2, 32); /* Change font color for data */
+            background-color: white;
+        }
+
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .chart {
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .chart_line {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <!-- Upper Portion -->
+
+    <div class="container">
+        <img src="{% static 'images/logodvstracker.png' %}" alt="" style="height: 70px; width: 70px; float:right;">
+        <div class="text-center" style="margin-left: 10px; margin-right: 10px;">
+            <h1 style="color: black;">Data Verification System Tracker</h1>
+            <p style="text-align: center; font-size: smaller; color: navy;">All rights reserved by FRC Bangladesh</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="charts">
+                    <div class="chart_line" id="lineChart">{{ line_chart | safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h5>Latest Information</h5>
+                    <a href="{% url 'filter_data' %}">
+                        <button type="submit" class="btn btn-primary mx-auto p-2">Click to filter all data</button>
+                    </a>
+                </div>
+                <div class="table-container">
+                    <h4 style="text-align: center">{{ filter_title }}</h4>
+                    <table id="dataTable" class="display">
+                        {{ df.to_html | safe }}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="charts">
+                    <div class="chart" id="industryChart">{{ industry_chart | safe }}</div>
+                    <div class="chart" id="sectorChart">{{ sector_chart | safe }}</div>
+                    <div class="chart" id="legalChart">{{ legal_status_chart | safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Plotly charts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Plotly.newPlot('industryChart', JSON.parse(document.getElementById('industryChart').textContent));
+            Plotly.newPlot('sectorChart', JSON.parse(document.getElementById('sectorChart').textContent));
+            Plotly.newPlot('legalChart', JSON.parse(document.getElementById('legalChart').textContent));
+            Plotly.newPlot('lineChart', JSON.parse(document.getElementById('lineChart').textContent));
+        });
+    </script>
+</body>
+</html>
